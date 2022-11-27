@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FOS.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="generator" content="SynEdit HTML exporter" />
+<style type="text/css">
+<!--
+body { color: #000000; background-color: #FFFFFF; }
+.cpp1-assembler { color: #0000FF; }
+.cpp1-character { color: #000000; }
+.cpp1-comment { color: #0078D7; font-style: italic; }
+.cpp1-float { color: #800080; }
+.cpp1-hexadecimal { color: #800080; }
+.cpp1-identifier { color: #000000; }
+.cpp1-illegalchar { color: #000000; }
+.cpp1-number { color: #800080; }
+.cpp1-octal { color: #800080; }
+.cpp1-preprocessor { color: #008000; }
+.cpp1-reservedword { color: #000000; font-weight: bold; }
+.cpp1-space { background-color: #FFFFFF; color: #000000; }
+.cpp1-string { color: #0000FF; font-weight: bold; }
+.cpp1-symbol { color: #FF0000; font-weight: bold; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<code><span style="font: 10pt Consolas;"><span class="cpp1-comment">/*4*/
+</span><span class="cpp1-preprocessor">#include &lt;stdio.h&gt;
+#include&lt;dirent.h&gt;
+#include&lt;stdlib.h&gt;
+</span><span class="cpp1-reservedword">struct</span><span class="cpp1-space"> dirent</span><span class="cpp1-symbol">*</span><span class="cpp1-identifier">dptr</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> main</span><span class="cpp1-symbol">(</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> argc</span><span class="cpp1-symbol">,</span><span class="cpp1-reservedword">char</span><span class="cpp1-symbol">*</span><span class="cpp1-identifier">argv</span><span class="cpp1-symbol">[])
+{
+</span><span class="cpp1-space">    </span><span class="cpp1-reservedword">char</span><span class="cpp1-space"> buff</span><span class="cpp1-symbol">[</span><span class="cpp1-number">100</span><span class="cpp1-symbol">];
+</span><span class="cpp1-space">    DIR</span><span class="cpp1-symbol">*</span><span class="cpp1-identifier">dirp</span><span class="cpp1-symbol">;
+</span><span class="cpp1-space">    printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n\nENTER DIRECTORY NAME &quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-space">    scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%s&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">buff</span><span class="cpp1-symbol">);
+</span><span class="cpp1-space">    </span><span class="cpp1-reservedword">if</span><span class="cpp1-space"> </span><span class="cpp1-symbol">((</span><span class="cpp1-identifier">dirp</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">opendir</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">buff</span><span class="cpp1-symbol">))==</span><span class="cpp1-identifier">NULL</span><span class="cpp1-symbol">)
+</span><span class="cpp1-space">    </span><span class="cpp1-symbol">{
+</span><span class="cpp1-space">        printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;The given dircentory does not exist&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-space">        exit</span><span class="cpp1-symbol">(</span><span class="cpp1-number">1</span><span class="cpp1-symbol">);
+</span><span class="cpp1-space">    </span><span class="cpp1-symbol">}
+</span><span class="cpp1-space">    </span><span class="cpp1-reservedword">while</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">dptr</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">readdir</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">dirp</span><span class="cpp1-symbol">))
+</span><span class="cpp1-space">    </span><span class="cpp1-symbol">{
+</span><span class="cpp1-space">        printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%s\n&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">dptr</span><span class="cpp1-symbol">-&gt;</span><span class="cpp1-identifier">d_name</span><span class="cpp1-symbol">);
+</span><span class="cpp1-space">    </span><span class="cpp1-symbol">}
+</span><span class="cpp1-space">    closedir</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">dirp</span><span class="cpp1-symbol">);
+}
+</span><span class="cpp1-comment">/*5a*/
+</span><span class="cpp1-preprocessor">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+</span><span class="cpp1-reservedword">struct</span><span class="cpp1-space"> fcfs
+</span><span class="cpp1-symbol">{
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> pid</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> btime</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> wtime</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> ttime</span><span class="cpp1-symbol">;
+}
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-number">10</span><span class="cpp1-symbol">];
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> main</span><span class="cpp1-symbol">()
+{
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> towtwtime</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">totttime</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n fcfs scheduling... \n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;enter the no of process&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">pid</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n burst time of the process&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">btime</span><span class="cpp1-symbol">);
+}
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-number">0</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">wtime</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-number">0</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">ttime</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-number">0</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">btime</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">totttime</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">ttime</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">wtime</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">-</span><span class="cpp1-number">1</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">wtime</span><span class="cpp1-symbol">+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">-</span><span class="cpp1-number">1</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">btime</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">ttime</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">wtime</span><span class="cpp1-symbol">+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">btime</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">totttime</span><span class="cpp1-symbol">+=</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">ttime</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">towtwtime</span><span class="cpp1-symbol">+=</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">wtime</span><span class="cpp1-symbol">;
+}
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{{
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n waiting time for process&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n turn around time for process&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n&quot;</span><span class="cpp1-symbol">);
+}}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n total waiting time :%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> totttime </span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n average waiting time :%f&quot;</span><span class="cpp1-symbol">,(</span><span class="cpp1-reservedword">float</span><span class="cpp1-symbol">)</span><span class="cpp1-identifier">totttime</span><span class="cpp1-symbol">/</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n total turn around time :%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">totttime</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n average turn around time: :%f&quot;</span><span class="cpp1-symbol">,(</span><span class="cpp1-reservedword">float</span><span class="cpp1-symbol">)</span><span class="cpp1-identifier">totttime</span><span class="cpp1-symbol">/</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">);
+}
+
+
+</span><span class="cpp1-preprocessor">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+</span><span class="cpp1-reservedword">typedef</span><span class="cpp1-space"> </span><span class="cpp1-reservedword">struct
+</span><span class="cpp1-symbol">{
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> pid</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> btime</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> wtime</span><span class="cpp1-symbol">;
+}
+</span><span class="cpp1-identifier">sp</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> main</span><span class="cpp1-symbol">()
+{
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">tbm</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">towtwtime</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">totttime</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">sp</span><span class="cpp1-symbol">*</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">t</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n sjf schaduling .. \n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;enter the no of processor&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">=(</span><span class="cpp1-identifier">sp</span><span class="cpp1-symbol">*)</span><span class="cpp1-identifier">malloc</span><span class="cpp1-symbol">(</span><span class="cpp1-reservedword">sizeof</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">sp</span><span class="cpp1-symbol">));
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n enter the burst time&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n process %d\t&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">btime</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">pid</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">wtime</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+}
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> j</span><span class="cpp1-symbol">++);
+{
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">btime</span><span class="cpp1-symbol">&gt;</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">btime</span><span class="cpp1-symbol">)
+{
+</span><span class="cpp1-identifier">t</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]=</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]=</span><span class="cpp1-identifier">t</span><span class="cpp1-symbol">;
+}}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n process scheduling\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n process \tburst time \t w&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">towtwtime</span><span class="cpp1-symbol">+=</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">wtime</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">tbm</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">tbm</span><span class="cpp1-symbol">+=</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">btime</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n%d\t\t%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">pid</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">btime</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\t\t%d\t\t%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">wtime</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">btime</span><span class="cpp1-symbol">);
+}
+</span><span class="cpp1-identifier">totttime</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">tbm</span><span class="cpp1-symbol">+</span><span class="cpp1-identifier">towtwtime</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n total waiting time :%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> totttime </span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n average waiting time :%f&quot;</span><span class="cpp1-symbol">,(</span><span class="cpp1-reservedword">float</span><span class="cpp1-symbol">)</span><span class="cpp1-identifier">totttime</span><span class="cpp1-symbol">/</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n total turn around time :%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">totttime</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n average turn around time: :%f&quot;</span><span class="cpp1-symbol">,(</span><span class="cpp1-reservedword">float</span><span class="cpp1-symbol">)</span><span class="cpp1-identifier">totttime</span><span class="cpp1-symbol">/</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">);
+}
+
+</span><span class="cpp1-comment">/* Round robin scheduling - rr.c */
+</span><span class="cpp1-preprocessor">#include &lt;stdio.h&gt;
+</span><span class="cpp1-identifier">main</span><span class="cpp1-symbol">()</span><span class="cpp1-space"> </span><span class="cpp1-symbol">{
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">x</span><span class="cpp1-symbol">=-</span><span class="cpp1-number">1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">[</span><span class="cpp1-number">10</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">m</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">t</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">s</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> a</span><span class="cpp1-symbol">[</span><span class="cpp1-number">50</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">temp</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-number">50</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-number">10</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">bur</span><span class="cpp1-symbol">[</span><span class="cpp1-number">10</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">bur1</span><span class="cpp1-symbol">[</span><span class="cpp1-number">10</span><span class="cpp1-symbol">];
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> wat</span><span class="cpp1-symbol">[</span><span class="cpp1-number">10</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">tur</span><span class="cpp1-symbol">[</span><span class="cpp1-number">10</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">ttur</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">twat</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">float</span><span class="cpp1-space"> awat</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">atur</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Enter no. of process : &quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> </span><span class="cpp1-symbol">&amp;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Burst time for process P%d : &quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> </span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">));
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> </span><span class="cpp1-symbol">&amp;</span><span class="cpp1-identifier">bur</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]);
+</span><span class="cpp1-identifier">bur1</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> bur</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">];
+
+}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Enter the time slice (in ms) : &quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> </span><span class="cpp1-symbol">&amp;</span><span class="cpp1-identifier">t</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+{</span><span class="cpp1-space"> b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> bur</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">/</span><span class="cpp1-space"> t</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">((</span><span class="cpp1-identifier">bur</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]%</span><span class="cpp1-identifier">t</span><span class="cpp1-symbol">)</span><span class="cpp1-space"> </span><span class="cpp1-symbol">!=</span><span class="cpp1-space"> </span><span class="cpp1-number">0</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">+=</span><span class="cpp1-space"> </span><span class="cpp1-number">1</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">m </span><span class="cpp1-symbol">+=</span><span class="cpp1-space"> b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">];
+}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n\t\tRound Robin Scheduling\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nGANTT Chart\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">m</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)</span><span class="cpp1-space"> printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;--------&quot;</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">a</span><span class="cpp1-symbol">[</span><span class="cpp1-number">0</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">while</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j </span><span class="cpp1-symbol">&lt;</span><span class="cpp1-space"> m</span><span class="cpp1-symbol">)
+{
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">x </span><span class="cpp1-symbol">==</span><span class="cpp1-space"> n</span><span class="cpp1-symbol">-</span><span class="cpp1-number">1</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">x </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">else
+</span><span class="cpp1-identifier">x</span><span class="cpp1-symbol">++;
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">bur</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">x</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">&gt;=</span><span class="cpp1-space"> t</span><span class="cpp1-symbol">)
+{
+</span><span class="cpp1-identifier">bur</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">x</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">-=</span><span class="cpp1-space"> t</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">a</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> a</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">+</span><span class="cpp1-space"> t</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">x</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">==</span><span class="cpp1-space"> </span><span class="cpp1-number">1</span><span class="cpp1-symbol">)
+{
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">s</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> x</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">s</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> a</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">s</span><span class="cpp1-symbol">++;
+}
+</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++;
+</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">x</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">-=</span><span class="cpp1-space"> </span><span class="cpp1-number">1</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot; P%d | &quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> x</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">);
+}
+</span><span class="cpp1-reservedword">else</span><span class="cpp1-space"> </span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">bur</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">x</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">!=</span><span class="cpp1-space"> </span><span class="cpp1-number">0</span><span class="cpp1-symbol">)
+{
+</span><span class="cpp1-identifier">a</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> a</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">+</span><span class="cpp1-space"> bur</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">x</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">bur</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">x</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">x</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">==</span><span class="cpp1-space"> </span><span class="cpp1-number">1</span><span class="cpp1-symbol">)
+{
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">s</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> x</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">s</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> a</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">s</span><span class="cpp1-symbol">++;
+}
+
+</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++;
+</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">x</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">-=</span><span class="cpp1-space"> </span><span class="cpp1-number">1</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot; P%d |&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">x</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">);
+}
+}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n&quot;</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> </span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">m</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;--------&quot;</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> j</span><span class="cpp1-symbol">&lt;=</span><span class="cpp1-identifier">m</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> j</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d\t&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> a</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> j</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">&gt;</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">])
+{
+</span><span class="cpp1-identifier">temp </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> temp</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">temp </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> k</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> k</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> temp</span><span class="cpp1-symbol">;
+}
+}
+}
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">wat</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> k</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">-</span><span class="cpp1-space"> bur1</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">tur</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> k</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">];
+}
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">ttur </span><span class="cpp1-symbol">+=</span><span class="cpp1-space"> tur</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">twat </span><span class="cpp1-symbol">+=</span><span class="cpp1-space"> wat</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">];
+}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n\n&quot;</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> </span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-number">30</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)</span><span class="cpp1-space"> printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;-&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nProcess\tBurst\tTrnd\tWait\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-number">30</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;-&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-space"> </span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nP%-4d\t%4d\t%4d\t%4d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> bur1</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">],</span><span class="cpp1-space"> tur</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">wat</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n&quot;</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> </span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-number">30</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;-&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">awat </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-symbol">(</span><span class="cpp1-reservedword">float</span><span class="cpp1-symbol">)</span><span class="cpp1-identifier">twat </span><span class="cpp1-symbol">/</span><span class="cpp1-space"> n</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> atur </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-symbol">(</span><span class="cpp1-reservedword">float</span><span class="cpp1-symbol">)</span><span class="cpp1-identifier">ttur </span><span class="cpp1-symbol">/</span><span class="cpp1-space"> n</span><span class="cpp1-symbol">;
+
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n\nAverage waiting time : %.2f ms&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> awat</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nAverage turn around time : %.2f ms\n&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> atur</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> </span><span class="cpp1-symbol">}
+
+
+</span><span class="cpp1-comment">/* Priority Scheduling - pri.c */
+</span><span class="cpp1-preprocessor">#include &lt;stdio.h&gt;
+</span><span class="cpp1-reservedword">struct</span><span class="cpp1-space"> process
+</span><span class="cpp1-symbol">{</span><span class="cpp1-space"> </span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> pid</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> btime</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> 
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> pri</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> wtime</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> ttime</span><span class="cpp1-symbol">;
+}</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-number">10</span><span class="cpp1-symbol">],</span><span class="cpp1-space"> temp</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">main</span><span class="cpp1-symbol">()</span><span class="cpp1-space"> </span><span class="cpp1-symbol">{
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">ttur</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">twat</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> </span><span class="cpp1-reservedword">float</span><span class="cpp1-space"> awat</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">atur</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Enter no. of process : &quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> </span><span class="cpp1-symbol">&amp;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Burst time for process P%d (in ms) : &quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> </span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">));
+
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> </span><span class="cpp1-symbol">&amp;</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">btime</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Priority for process P%d : &quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> </span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">));
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> </span><span class="cpp1-symbol">&amp;</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">pri</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">pid </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;
+}
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">-</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> j</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">((</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">pri </span><span class="cpp1-symbol">&gt;</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">pri</span><span class="cpp1-symbol">)</span><span class="cpp1-space"> </span><span class="cpp1-symbol">||(</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">pri </span><span class="cpp1-symbol">==</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">pri </span><span class="cpp1-symbol">&amp;&amp;</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">pid </span><span class="cpp1-symbol">&gt;</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">pid</span><span class="cpp1-symbol">)</span><span class="cpp1-space"> </span><span class="cpp1-symbol">)
+{
+</span><span class="cpp1-identifier">temp </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]</span><span class="cpp1-space"> </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> temp</span><span class="cpp1-symbol">;
+}
+}
+}
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-number">0</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">wtime </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> </span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">wtime </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">wtime </span><span class="cpp1-symbol">+</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">btime</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">ttime </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">wtime </span><span class="cpp1-symbol">+</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">btime</span><span class="cpp1-symbol">;
+}
+</span><span class="cpp1-identifier">ttur </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> twat </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">ttur </span><span class="cpp1-symbol">+=</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">ttime</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">twat </span><span class="cpp1-symbol">+=</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">wtime</span><span class="cpp1-symbol">;
+}
+</span><span class="cpp1-identifier">awat </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-symbol">(</span><span class="cpp1-reservedword">float</span><span class="cpp1-symbol">)</span><span class="cpp1-identifier">twat </span><span class="cpp1-symbol">/</span><span class="cpp1-space"> n</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">atur </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> </span><span class="cpp1-symbol">(</span><span class="cpp1-reservedword">float</span><span class="cpp1-symbol">)</span><span class="cpp1-identifier">ttur </span><span class="cpp1-symbol">/</span><span class="cpp1-space"> n</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n\t Priority Scheduling\n\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-number">38</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)</span><span class="cpp1-space"> printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;-&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nProcess B-Time Priority T-Time W-Time\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-number">38</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;-&quot;</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> </span><span class="cpp1-reservedword">for</span><span class="cpp1-space"> </span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n P%-4d\t%4d\t%3d\t%4d\t%4d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">pid</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">btime</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">pri</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">ttime</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">wtime</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-number">38</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;-&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n\nAverage waiting time : %5.2fms&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> awat</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nAverage turn around time : %5.2fms\n&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-space"> atur</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n\nGANTT Chart\n&quot;</span><span class="cpp1-symbol">);
+
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;-&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;(</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">-</span><span class="cpp1-number">1</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">ttime </span><span class="cpp1-symbol">+</span><span class="cpp1-space"> </span><span class="cpp1-number">2</span><span class="cpp1-symbol">*</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;-&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n|&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">k </span><span class="cpp1-symbol">=</span><span class="cpp1-space"> p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">btime</span><span class="cpp1-symbol">/</span><span class="cpp1-number">2</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> j</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot; &quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;P%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">pid</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">btime</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> j</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot; &quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;|&quot;</span><span class="cpp1-symbol">);
+}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n-&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;(</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">-</span><span class="cpp1-number">1</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">ttime </span><span class="cpp1-symbol">+</span><span class="cpp1-space"> </span><span class="cpp1-number">2</span><span class="cpp1-symbol">*</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;-&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n0&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">btime</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> j</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot; &quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%2d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">].</span><span class="cpp1-identifier">ttime</span><span class="cpp1-symbol">);
+}
+}
+
+
+</span><span class="cpp1-comment">/*7. Producer – Consumer problem using semaphores.*/</span><span class="cpp1-identifier">s
+
+</span><span class="cpp1-preprocessor">#include&lt;stdio.h&gt;
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> mutex</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">full</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">empty</span><span class="cpp1-symbol">=</span><span class="cpp1-number">3</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">x</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> 
+</span><span class="cpp1-reservedword">void</span><span class="cpp1-space"> main</span><span class="cpp1-symbol">()
+{</span><span class="cpp1-space"> 
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> n</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> 
+</span><span class="cpp1-reservedword">void</span><span class="cpp1-space"> producer</span><span class="cpp1-symbol">();</span><span class="cpp1-space"> 
+</span><span class="cpp1-reservedword">void</span><span class="cpp1-space"> consumer</span><span class="cpp1-symbol">();</span><span class="cpp1-space"> 
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> wait</span><span class="cpp1-symbol">(</span><span class="cpp1-reservedword">int</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> 
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> signal</span><span class="cpp1-symbol">(</span><span class="cpp1-reservedword">int</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> 
+printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n1.PRODUCER\n2.CONSUMER\n3.EXIT\n&quot;</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> 
+</span><span class="cpp1-reservedword">while</span><span class="cpp1-symbol">(</span><span class="cpp1-number">1</span><span class="cpp1-symbol">)
+</span><span class="cpp1-space"> </span><span class="cpp1-symbol">{</span><span class="cpp1-space"> 
+  printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nENTER YOUR CHOICE\n&quot;</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> 
+  scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> 
+  </span><span class="cpp1-reservedword">switch</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">)</span><span class="cpp1-space"> 
+   </span><span class="cpp1-symbol">{</span><span class="cpp1-space"> 
+   </span><span class="cpp1-reservedword">case</span><span class="cpp1-space"> </span><span class="cpp1-number">1</span><span class="cpp1-symbol">:</span><span class="cpp1-space"> 
+       </span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">((</span><span class="cpp1-identifier">mutex</span><span class="cpp1-symbol">==</span><span class="cpp1-number">1</span><span class="cpp1-symbol">)&amp;&amp;(</span><span class="cpp1-identifier">empty</span><span class="cpp1-symbol">!=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">))</span><span class="cpp1-space"> 
+           producer</span><span class="cpp1-symbol">();</span><span class="cpp1-space"> 
+      </span><span class="cpp1-reservedword">else
+</span><span class="cpp1-space">           printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;BUFFER IS FULL&quot;</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> 
+      </span><span class="cpp1-reservedword">break</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> 
+  </span><span class="cpp1-reservedword">case</span><span class="cpp1-space"> </span><span class="cpp1-number">2</span><span class="cpp1-symbol">:</span><span class="cpp1-space"> 
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">((</span><span class="cpp1-identifier">mutex</span><span class="cpp1-symbol">==</span><span class="cpp1-number">1</span><span class="cpp1-symbol">)&amp;&amp;(</span><span class="cpp1-identifier">full</span><span class="cpp1-symbol">!=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">))
+</span><span class="cpp1-space">   consumer</span><span class="cpp1-symbol">();</span><span class="cpp1-space"> 
+</span><span class="cpp1-reservedword">else
+</span><span class="cpp1-space">    printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;BUFFER IS EMPTY&quot;</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> 
+</span><span class="cpp1-reservedword">break</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> 
+   </span><span class="cpp1-reservedword">case</span><span class="cpp1-space"> </span><span class="cpp1-number">3</span><span class="cpp1-symbol">:</span><span class="cpp1-space"> 
+exit</span><span class="cpp1-symbol">(</span><span class="cpp1-number">0</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> 
+</span><span class="cpp1-reservedword">break</span><span class="cpp1-symbol">;</span><span class="cpp1-space"> 
+       </span><span class="cpp1-symbol">}
+</span><span class="cpp1-space">   </span><span class="cpp1-symbol">}
+}</span><span class="cpp1-space"> 
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> wait</span><span class="cpp1-symbol">(</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> s</span><span class="cpp1-symbol">)
+</span><span class="cpp1-space"> </span><span class="cpp1-symbol">{</span><span class="cpp1-space"> 
+      </span><span class="cpp1-reservedword">return</span><span class="cpp1-symbol">(--</span><span class="cpp1-identifier">s</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> 
+</span><span class="cpp1-symbol">}</span><span class="cpp1-space"> 
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> signal</span><span class="cpp1-symbol">(</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> s</span><span class="cpp1-symbol">)</span><span class="cpp1-space"> 
+</span><span class="cpp1-symbol">{</span><span class="cpp1-space"> 
+    </span><span class="cpp1-reservedword">return</span><span class="cpp1-symbol">(++</span><span class="cpp1-identifier">s</span><span class="cpp1-symbol">);
+</span><span class="cpp1-space"> </span><span class="cpp1-symbol">}</span><span class="cpp1-space"> 
+</span><span class="cpp1-reservedword">void</span><span class="cpp1-space"> producer</span><span class="cpp1-symbol">()</span><span class="cpp1-space"> 
+</span><span class="cpp1-symbol">{</span><span class="cpp1-space"> 
+mutex</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">wait</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">mutex</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> 
+full</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">signal</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">full</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> 
+empty</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">wait</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">empty</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> 
+x</span><span class="cpp1-symbol">++;</span><span class="cpp1-space"> 
+printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nproducer produces the item%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">x</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> 
+mutex</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">signal</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">mutex</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> 
+</span><span class="cpp1-symbol">}</span><span class="cpp1-space"> 
+</span><span class="cpp1-reservedword">void</span><span class="cpp1-space"> consumer</span><span class="cpp1-symbol">()</span><span class="cpp1-space"> 
+</span><span class="cpp1-symbol">{</span><span class="cpp1-space"> 
+mutex</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">wait</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">mutex</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> 
+full</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">wait</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">full</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> 
+empty</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">signal</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">empty</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> 
+printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n consumer consumes item%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">x</span><span class="cpp1-symbol">);</span><span class="cpp1-space"> 
+x</span><span class="cpp1-symbol">--;</span><span class="cpp1-space"> 
+mutex</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">signal</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">mutex</span><span class="cpp1-symbol">);
+</span><span class="cpp1-space"> </span><span class="cpp1-symbol">}</span><span class="cpp1-space"> 
+
+
+</span><span class="cpp1-comment">/*8. Banker’s Algorithm.*/
+
+</span><span class="cpp1-preprocessor">#include&lt;stdio.h&gt;
+#include&lt;conio.h&gt;
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> max</span><span class="cpp1-symbol">[</span><span class="cpp1-number">100</span><span class="cpp1-symbol">][</span><span class="cpp1-number">100</span><span class="cpp1-symbol">];
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> alloc</span><span class="cpp1-symbol">[</span><span class="cpp1-number">100</span><span class="cpp1-symbol">][</span><span class="cpp1-number">100</span><span class="cpp1-symbol">];
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> need</span><span class="cpp1-symbol">[</span><span class="cpp1-number">100</span><span class="cpp1-symbol">][</span><span class="cpp1-number">100</span><span class="cpp1-symbol">];
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> avail</span><span class="cpp1-symbol">[</span><span class="cpp1-number">100</span><span class="cpp1-symbol">];
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> n</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">void</span><span class="cpp1-space"> input</span><span class="cpp1-symbol">();
+</span><span class="cpp1-reservedword">void</span><span class="cpp1-space"> show</span><span class="cpp1-symbol">();
+</span><span class="cpp1-reservedword">void</span><span class="cpp1-space"> cal</span><span class="cpp1-symbol">();
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> main</span><span class="cpp1-symbol">()
+{
+</span><span class="cpp1-space"> </span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">;
+</span><span class="cpp1-space"> printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;********** Banker's Algorithm ************\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-space"> input</span><span class="cpp1-symbol">();
+</span><span class="cpp1-space"> show</span><span class="cpp1-symbol">();
+</span><span class="cpp1-space"> cal</span><span class="cpp1-symbol">();
+</span><span class="cpp1-space"> getch</span><span class="cpp1-symbol">();
+</span><span class="cpp1-space"> </span><span class="cpp1-reservedword">return</span><span class="cpp1-space"> </span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+}
+</span><span class="cpp1-reservedword">void</span><span class="cpp1-space"> input</span><span class="cpp1-symbol">()
+{
+</span><span class="cpp1-space">  </span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">;
+</span><span class="cpp1-space">  printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Enter the no of Processes\t&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-space">  scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">);
+</span><span class="cpp1-space">  printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Enter the no of resources instances\t&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-space">  scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">);
+</span><span class="cpp1-space">  printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Enter the Max Matrix\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-space"> 
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-space"> </span><span class="cpp1-symbol">{
+</span><span class="cpp1-space">  </span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-space">   </span><span class="cpp1-symbol">{
+</span><span class="cpp1-space">      scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">max</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">][</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]);
+</span><span class="cpp1-space">   </span><span class="cpp1-symbol">}
+}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Enter the Allocation Matrix\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-space">  </span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-space">   </span><span class="cpp1-symbol">{
+</span><span class="cpp1-space">     scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">alloc</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">][</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]);
+</span><span class="cpp1-space">   </span><span class="cpp1-symbol">}
+}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Enter the available Resources\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-space">  </span><span class="cpp1-symbol">{
+</span><span class="cpp1-space">     scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">avail</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]);
+</span><span class="cpp1-space">  </span><span class="cpp1-symbol">}
+}
+</span><span class="cpp1-reservedword">void</span><span class="cpp1-space"> show</span><span class="cpp1-symbol">()
+{
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Process\t Allocation\t Max\t Available\t&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-space">  printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nP%d\t &quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">);
+</span><span class="cpp1-space">  </span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-space">  </span><span class="cpp1-symbol">{
+</span><span class="cpp1-space">     printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d &quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">alloc</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">][</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]);
+</span><span class="cpp1-space">  </span><span class="cpp1-symbol">}
+</span><span class="cpp1-space">   printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\t&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-space">    </span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-space">   </span><span class="cpp1-symbol">{
+</span><span class="cpp1-space">      printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d &quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">max</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">][</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]);
+</span><span class="cpp1-space">    </span><span class="cpp1-symbol">}
+</span><span class="cpp1-space">    printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\t&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-space">   </span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">==</span><span class="cpp1-number">0</span><span class="cpp1-symbol">)
+</span><span class="cpp1-space">    </span><span class="cpp1-symbol">{
+</span><span class="cpp1-space">      </span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-space">         printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d &quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">avail</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]);
+</span><span class="cpp1-space">   </span><span class="cpp1-symbol">}
+</span><span class="cpp1-space"> </span><span class="cpp1-symbol">}
+}
+
+</span><span class="cpp1-reservedword">void</span><span class="cpp1-space"> cal</span><span class="cpp1-symbol">()
+{
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> finish</span><span class="cpp1-symbol">[</span><span class="cpp1-number">100</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">temp</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">need</span><span class="cpp1-symbol">[</span><span class="cpp1-number">100</span><span class="cpp1-symbol">][</span><span class="cpp1-number">100</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">flag</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">c1</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> safe</span><span class="cpp1-symbol">[</span><span class="cpp1-number">100</span><span class="cpp1-symbol">];
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-space">   finish</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+}
+</span><span class="cpp1-space"> </span><span class="cpp1-comment">//find need matrix
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-space">    </span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-space">  </span><span class="cpp1-symbol">{
+</span><span class="cpp1-space">     need</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">][</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]=</span><span class="cpp1-identifier">max</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">][</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]-</span><span class="cpp1-identifier">alloc</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">][</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">];
+</span><span class="cpp1-space">   </span><span class="cpp1-symbol">}
+}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">while</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">flag</span><span class="cpp1-symbol">)
+{
+</span><span class="cpp1-space">   flag</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+</span><span class="cpp1-space">    </span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-space">   </span><span class="cpp1-symbol">{
+</span><span class="cpp1-space">     </span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> c</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+</span><span class="cpp1-space">       </span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-space">       </span><span class="cpp1-symbol">{
+</span><span class="cpp1-space">          </span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">((</span><span class="cpp1-identifier">finish</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]==</span><span class="cpp1-number">0</span><span class="cpp1-symbol">)&amp;&amp;(</span><span class="cpp1-identifier">need</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">][</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]&lt;=</span><span class="cpp1-identifier">avail</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]))
+</span><span class="cpp1-space">         </span><span class="cpp1-symbol">{
+</span><span class="cpp1-space">            c</span><span class="cpp1-symbol">++;
+</span><span class="cpp1-space">           </span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">c</span><span class="cpp1-symbol">==</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">)
+</span><span class="cpp1-space">          </span><span class="cpp1-symbol">{
+</span><span class="cpp1-space">            </span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-space">           </span><span class="cpp1-symbol">{
+</span><span class="cpp1-identifier">avail</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">]+=</span><span class="cpp1-identifier">alloc</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">][</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">finish</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">flag</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;
+}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;P%d-&gt;&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">);
+</span><span class="cpp1-space">        </span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">finish</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]==</span><span class="cpp1-number">1</span><span class="cpp1-symbol">)
+</span><span class="cpp1-space">      </span><span class="cpp1-symbol">{
+</span><span class="cpp1-space">            i</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;
+</span><span class="cpp1-space">     </span><span class="cpp1-symbol">}
+</span><span class="cpp1-space">   </span><span class="cpp1-symbol">}
+</span><span class="cpp1-space"> </span><span class="cpp1-symbol">}
+}
+}
+}
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">finish</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]==</span><span class="cpp1-number">1</span><span class="cpp1-symbol">)
+{
+</span><span class="cpp1-identifier">c1</span><span class="cpp1-symbol">++;
+}
+</span><span class="cpp1-reservedword">else
+</span><span class="cpp1-symbol">{</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;P%d-&gt;&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">);
+}}
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">c1</span><span class="cpp1-symbol">==</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">)
+{</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n The system is in safe state&quot;</span><span class="cpp1-symbol">);
+}
+</span><span class="cpp1-reservedword">else
+</span><span class="cpp1-symbol">{
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n Process are in dead lock&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n System is in unsafe state&quot;</span><span class="cpp1-symbol">);
+}}
+
+</span><span class="cpp1-comment">/*MEMORY ALLOCATION METHODS FOR FIXED PARTITION-worst fit*/
+
+</span><span class="cpp1-preprocessor">#include&lt;stdio.h&gt;
+#include&lt;conio.h&gt;
+#define max 25
+</span><span class="cpp1-reservedword">void</span><span class="cpp1-space"> main</span><span class="cpp1-symbol">()
+{
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> frag</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">max</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">max</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">max</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">nb</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">nf</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">temp</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">highest</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">static</span><span class="cpp1-space"> </span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> bf</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">max</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">ff</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">max</span><span class="cpp1-symbol">];
+
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n\tMemory Management Scheme - Worst Fit&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nEnter the number of blocks:&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">nb</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Enter the number of files:&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">nf</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nEnter the size of the blocks:-\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;=</span><span class="cpp1-identifier">nb</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Block %d:&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]);
+}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Enter the size of the files :-\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;=</span><span class="cpp1-identifier">nf</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;File %d:&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]);
+}
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;=</span><span class="cpp1-identifier">nf</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">&lt;=</span><span class="cpp1-identifier">nb</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">bf</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]!=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">)</span><span class="cpp1-space"> </span><span class="cpp1-comment">//if bf[j] is not allocated
+</span><span class="cpp1-symbol">{
+</span><span class="cpp1-identifier">temp</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]-</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">];
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">temp</span><span class="cpp1-symbol">&gt;=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">)
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">highest</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">temp</span><span class="cpp1-symbol">)
+{
+</span><span class="cpp1-identifier">ff</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]=</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">highest</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">temp</span><span class="cpp1-symbol">;
+}
+}
+}
+</span><span class="cpp1-identifier">frag</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]=</span><span class="cpp1-identifier">highest</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">bf</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">ff</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]]=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">highest</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nFile_no:\tFile_size :\tBlock_no:\tBlock_size:\tFragement&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;=</span><span class="cpp1-identifier">nf</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n%d\t\t%d\t\t%d\t\t%d\t\t%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">ff</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">ff</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]],</span><span class="cpp1-identifier">frag</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]);
+</span><span class="cpp1-identifier">getch</span><span class="cpp1-symbol">();
+}
+
+
+</span><span class="cpp1-comment">/*MEMORY ALLOCATION METHODS FOR FIXED PARTITION-first fit*/
+
+</span><span class="cpp1-preprocessor">#include&lt;stdio.h&gt;
+#include&lt;conio.h&gt;
+#define max 25
+</span><span class="cpp1-reservedword">void</span><span class="cpp1-space"> main</span><span class="cpp1-symbol">()
+{
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> frag</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">max</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">max</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">max</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">nb</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">nf</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">temp</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">static</span><span class="cpp1-space"> </span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> bf</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">max</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">ff</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">max</span><span class="cpp1-symbol">];
+
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n\tMemory Management Scheme - First Fit&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nEnter the number of blocks:&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">nb</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Enter the number of files:&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">nf</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nEnter the size of the blocks:-\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;=</span><span class="cpp1-identifier">nb</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Block %d:&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]);
+}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Enter the size of the files :-\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;=</span><span class="cpp1-identifier">nf</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;File %d:&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]);
+}
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;=</span><span class="cpp1-identifier">nf</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">&lt;=</span><span class="cpp1-identifier">nb</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">bf</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]!=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">)
+{
+</span><span class="cpp1-identifier">temp</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]-</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">];
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">temp</span><span class="cpp1-symbol">&gt;=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">)
+{
+</span><span class="cpp1-identifier">ff</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]=</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">break</span><span class="cpp1-symbol">;
+}
+}
+}
+</span><span class="cpp1-identifier">frag</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]=</span><span class="cpp1-identifier">temp</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">bf</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">ff</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]]=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;
+}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nFile_no:\tFile_size :\tBlock_no:\tBlock_size:\tFragement&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;=</span><span class="cpp1-identifier">nf</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n%d\t\t%d\t\t%d\t\t%d\t\t%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">ff</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">ff</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]],</span><span class="cpp1-identifier">frag</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]);
+</span><span class="cpp1-identifier">getch</span><span class="cpp1-symbol">();
+}
+
+
+</span><span class="cpp1-comment">/*MEMORY ALLOCATION METHODS FOR FIXED PARTITION-best fit*/
+
+</span><span class="cpp1-preprocessor">#include&lt;stdio.h&gt;
+#include&lt;conio.h&gt;
+#define max 25
+</span><span class="cpp1-reservedword">void</span><span class="cpp1-space"> main</span><span class="cpp1-symbol">()
+{
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> frag</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">max</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">max</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">max</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">nb</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">nf</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">temp</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">lowest</span><span class="cpp1-symbol">=</span><span class="cpp1-number">10000</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">static</span><span class="cpp1-space"> </span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> bf</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">max</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">ff</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">max</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">clrscr</span><span class="cpp1-symbol">();
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nEnter the number of blocks:&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">nb</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Enter the number of files:&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">nf</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nEnter the size of the blocks:-\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;=</span><span class="cpp1-identifier">nb</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Block %d:&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]);
+}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Enter the size of the files :-\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;=</span><span class="cpp1-identifier">nf</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;File %d:&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]);
+}
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;=</span><span class="cpp1-identifier">nf</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">&lt;=</span><span class="cpp1-identifier">nb</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">bf</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]!=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">)
+{
+</span><span class="cpp1-identifier">temp</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]-</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">];
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">temp</span><span class="cpp1-symbol">&gt;=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">)
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">lowest</span><span class="cpp1-symbol">&gt;</span><span class="cpp1-identifier">temp</span><span class="cpp1-symbol">)
+{
+</span><span class="cpp1-identifier">ff</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]=</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">;
+
+</span><span class="cpp1-identifier">lowest</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">temp</span><span class="cpp1-symbol">;
+}
+}
+}
+</span><span class="cpp1-identifier">frag</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]=</span><span class="cpp1-identifier">lowest</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">bf</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">ff</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]]=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">lowest</span><span class="cpp1-symbol">=</span><span class="cpp1-number">10000</span><span class="cpp1-symbol">;
+}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nFile No\tFile Size \tBlock No\tBlock Size\tFragment&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;=</span><span class="cpp1-identifier">nf </span><span class="cpp1-symbol">&amp;&amp;</span><span class="cpp1-space"> ff</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]!=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n%d\t\t%d\t\t%d\t\t%d\t\t%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">ff</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">ff</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]],</span><span class="cpp1-identifier">frag</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]);
+</span><span class="cpp1-identifier">getch</span><span class="cpp1-symbol">();
+}
+
+</span><span class="cpp1-comment">/*PAGE REPLACEMENT ALGORITHMS-fifo*/
+
+</span><span class="cpp1-preprocessor">#include&lt;stdio.h&gt;
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> main</span><span class="cpp1-symbol">()
+{
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">i1</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">m</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">rs</span><span class="cpp1-symbol">[</span><span class="cpp1-number">30</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">flag</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-number">30</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">system</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;clear&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;FIFO page replacement algorithm....\\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;enter the no. of frames:&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;enter the reference string:&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">while</span><span class="cpp1-symbol">(</span><span class="cpp1-number">1</span><span class="cpp1-symbol">)
+{
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">rs</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]);
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">rs</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]==</span><span class="cpp1-number">0</span><span class="cpp1-symbol">)
+</span><span class="cpp1-reservedword">break</span><span class="cpp1-symbol">;
+</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++;
+}
+</span><span class="cpp1-identifier">m</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">m</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">flag</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]==</span><span class="cpp1-identifier">rs</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">])
+{
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;data already in page....\n&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">flag</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">break</span><span class="cpp1-symbol">;
+}
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">flag</span><span class="cpp1-symbol">==</span><span class="cpp1-number">1</span><span class="cpp1-symbol">)
+{
+</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i1</span><span class="cpp1-symbol">]=</span><span class="cpp1-identifier">rs</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">i1</span><span class="cpp1-symbol">++;
+</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">++;
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i1</span><span class="cpp1-symbol">==</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">)
+</span><span class="cpp1-identifier">i1</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n page %d:%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">+</span><span class="cpp1-number">1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]);
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]==</span><span class="cpp1-identifier">rs</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">])
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;*&quot;</span><span class="cpp1-symbol">);
+}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n\n&quot;</span><span class="cpp1-symbol">);
+}
+}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;total no page faults=%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">);
+}
+
+</span><span class="cpp1-comment">/*PAGE REPLACEMENT ALGORITHMS-lur*/
+
+</span><span class="cpp1-preprocessor">#include&lt;stdio.h&gt;
+</span><span class="cpp1-identifier">main</span><span class="cpp1-symbol">()
+{
+</span><span class="cpp1-reservedword">int</span><span class="cpp1-space"> q</span><span class="cpp1-symbol">[</span><span class="cpp1-number">20</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-number">50</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">c</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">c1</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">d</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">t</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-number">20</span><span class="cpp1-symbol">],</span><span class="cpp1-identifier">c2</span><span class="cpp1-symbol">[</span><span class="cpp1-number">20</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Enter no of pages:&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Enter the reference string:&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;Enter no of frames:&quot;</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">scanf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;%d&quot;</span><span class="cpp1-symbol">,&amp;</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">);
+</span><span class="cpp1-identifier">q</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">]=</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n\t%d\n&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">q</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">]);
+</span><span class="cpp1-identifier">c</span><span class="cpp1-symbol">++;
+</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">++;
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">=</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-space">	</span><span class="cpp1-symbol">{
+</span><span class="cpp1-space">		c1</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+</span><span class="cpp1-space">		</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-space">		</span><span class="cpp1-symbol">{
+</span><span class="cpp1-space">			</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">]!=</span><span class="cpp1-identifier">q</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">])
+</span><span class="cpp1-space">			c1</span><span class="cpp1-symbol">++;
+}
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">c1</span><span class="cpp1-symbol">==</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">)
+{</span><span class="cpp1-identifier">c</span><span class="cpp1-symbol">++;
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">)
+{</span><span class="cpp1-identifier">q</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">]=</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">++;
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">k</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\t%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">q</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]);
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n&quot;</span><span class="cpp1-symbol">);
+}
+</span><span class="cpp1-reservedword">else
+</span><span class="cpp1-symbol">{</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">++)
+{</span><span class="cpp1-identifier">c2</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">]=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">-</span><span class="cpp1-number">1</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">n</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">--)
+{</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">q</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">]!=</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">])
+</span><span class="cpp1-identifier">c2</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">]++;
+</span><span class="cpp1-reservedword">else
+break</span><span class="cpp1-symbol">;
+}}
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">++)
+</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">]=</span><span class="cpp1-identifier">c2</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">];
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">]&lt;</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">])
+{
+</span><span class="cpp1-identifier">t</span><span class="cpp1-symbol">=</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">]=</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">j</span><span class="cpp1-symbol">]=</span><span class="cpp1-identifier">t</span><span class="cpp1-symbol">;
+}}}
+</span><span class="cpp1-reservedword">for</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">=</span><span class="cpp1-number">0</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">&lt;</span><span class="cpp1-identifier">f</span><span class="cpp1-symbol">;</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">++)
+{
+</span><span class="cpp1-reservedword">if</span><span class="cpp1-symbol">(</span><span class="cpp1-identifier">c2</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">]==</span><span class="cpp1-identifier">b</span><span class="cpp1-symbol">[</span><span class="cpp1-number">0</span><span class="cpp1-symbol">])
+</span><span class="cpp1-identifier">q</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">]=</span><span class="cpp1-identifier">p</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">i</span><span class="cpp1-symbol">];
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\t%d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">q</span><span class="cpp1-symbol">[</span><span class="cpp1-identifier">r</span><span class="cpp1-symbol">]);
+}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\n&quot;</span><span class="cpp1-symbol">);
+}}}
+</span><span class="cpp1-identifier">printf</span><span class="cpp1-symbol">(</span><span class="cpp1-string">&quot;\nThe no of page faults is %d&quot;</span><span class="cpp1-symbol">,</span><span class="cpp1-identifier">c</span><span class="cpp1-symbol">);
+}
+
+</span></span>
+</code></pre>
+</body>
+</html>
